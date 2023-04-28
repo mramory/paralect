@@ -1,0 +1,28 @@
+.container{
+    display: flex;
+    align-items: center;
+    padding: 24px 0;
+    background-color: #fff;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+    margin-right: 280px;
+}
+
+.logo_text{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    margin-left: 12px;
+}
+
+.nav{
+    display: flex;
+    align-items: center;
+}
+
+.nav_first_child{
+    margin-right: 60px;
+}
