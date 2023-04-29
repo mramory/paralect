@@ -1,10 +1,37 @@
 .container{
-    max-width: 275px;
+    width: 275px;
+    padding: 20px;
+}
+.wrapper{
+    display: inline-block;
+    background-color: #fff;
+    border: 1px solid #EAEBED;
+    border-radius: 12px;
 }
 .label{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 32px;
+}
+.field{
+    margin-bottom: 20px;
+}
+
+.field_text{
+    font-weight: 700;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+.salary{
+    margin-bottom: 20px;
+}
+.salary div{
+    margin-top: 8px;
+}
+.salary_text{
+    font-weight: 700;
+    font-size: 16px;
 }
 .reset{
     display: flex;
