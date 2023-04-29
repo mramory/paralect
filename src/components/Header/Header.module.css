@@ -1,10 +1,15 @@
 .container{
+    max-width: 1116px;
     display: flex;
     align-items: center;
     padding: 24px 0;
-    background-color: #fff;
+    margin: 0 auto;
 }
 
+.wrapper{
+    width: 100%;
+    background-color: #fff;
+}
 .logo{
     display: flex;
     align-items: center;
