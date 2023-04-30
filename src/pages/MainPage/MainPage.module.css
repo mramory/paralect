@@ -1,0 +1,10 @@
+.container{
+    display: flex;
+    justify-content: center;
+}
+.filter{
+    margin-right: 28px;
+}
+.search{
+    margin-bottom: 16px;
+}

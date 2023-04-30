@@ -3,6 +3,7 @@ import s from "./Vacancy.module.css";
 import not_selected_star from "/not_selected_star.svg";
 import selected_star from "/selected_star.svg";
 import location from "/location.svg";
+import {NavLink} from "react-router-dom"
 
 export const Vacancy = () => {
   const [isSelected, setIsSelected] = useState(false);
@@ -16,7 +17,7 @@ export const Vacancy = () => {
     <div className={s.wrapper}>
       <div className={s.container}>
         <div className={s.label}>
-          <div className={s.title}>Менеджер-дизайнер</div>
+        <NavLink to={"/vacancies/1"}><div className={s.title}>Менеджер-дизайнер</div></NavLink>
           <div onClick={changeIsSelected} className={s.favorite_icon}>
             {isSelected ? (
               <img src={selected_star}></img>

@@ -1,17 +1,8 @@
 import { useState } from 'react';
 import { Select } from '@mantine/core';
-import { createStyles, Menu, rem } from '@mantine/core';
+import { createStyles, rem } from '@mantine/core';
 import ddbtn from "/dropDownBtn.svg"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
-const data = [
-  { label: 'English' },
-  { label: 'German' },
-  { label: 'Italian' },
-  { label: 'French' },
-  { label: 'Polish' },
-];
 
 const useStyles = createStyles((theme, { opened }: { opened: boolean }) => ({
   control: {
@@ -51,15 +42,6 @@ const useStyles = createStyles((theme, { opened }: { opened: boolean }) => ({
 export function ChooseField() {
   const [opened, setOpened] = useState(false);
   const { classes } = useStyles({ opened });
-  const [selected, setSelected] = useState(data[0]);
-  const items = data.map((item) => (
-    <Menu.Item
-      onClick={() => setSelected(item)}
-      key={item.label}
-    >
-      {item.label}
-    </Menu.Item>
-  ));
 
   return (
     <Select

@@ -9,6 +9,7 @@
 .wrapper{
     width: 100%;
     background-color: #fff;
+    margin-bottom: 40px;
 }
 .logo{
     display: flex;
@@ -30,4 +31,8 @@
 
 .nav_first_child{
     margin-right: 60px;
+}
+.selected{
+    font-weight: 500;
+    color: #5E96FC;
 }

@@ -1,0 +1,25 @@
+.wrapper{
+    width: 773px;
+    background: #fff;
+    border: 1px solid #EAEBED;
+    border-radius: 12px;
+}
+.container{
+    padding: 24px;
+    width: 725px;
+}
+.responsibilities{
+    font-weight: 700;
+    font-size: 20px;
+}
+.requirements{
+    font-weight: 700;
+    font-size: 20px;
+}
+.conditions{
+    font-weight: 700;
+    font-size: 20px;
+}
+ul{
+    padding-left: 25px;
+}
