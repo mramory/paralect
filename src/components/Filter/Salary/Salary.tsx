@@ -1,9 +1,18 @@
 import { NumberInput } from '@mantine/core';
 
-export const Salary = () => {
+type PropsType = {
+  setSalaryFrom: (salaryFrom: number | null | '') => void
+  setSalaryTo: (salaryTo: number | null | '') => void
+  salaryFrom: number | '' | null
+  salaryTo: number | '' | null
+}
+
+export const Salary = (props: PropsType) => {
     return(
         <>
         <NumberInput
+        value={props.salaryFrom as number | '' | undefined} 
+        onChange={(value) => props.setSalaryFrom(value)}
         hideControls
         placeholder="От"
         max={1000000}
@@ -11,6 +20,8 @@ export const Salary = () => {
         step={1000}
       />
         <NumberInput
+        value={props.salaryTo as number | '' | undefined} 
+        onChange={(value) => props.setSalaryTo(value)}
         hideControls
         placeholder="До"
         max={1000000}

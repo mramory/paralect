@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Select } from '@mantine/core';
 import { createStyles, rem } from '@mantine/core';
 import ddbtn from "/dropDownBtn.svg"
+import { catalogueVacancyType } from '../../../types';
 
 
 const useStyles = createStyles((theme, { opened }: { opened: boolean }) => ({
@@ -39,23 +40,30 @@ const useStyles = createStyles((theme, { opened }: { opened: boolean }) => ({
   },
 }));
 
-export function ChooseField() {
+
+type PropsType = {
+  catalogues: Array<catalogueVacancyType>
+  catalogue: string | null
+  setCatalogue: (value: string | null) => void
+}
+
+export function ChooseField(props: PropsType) {
   const [opened, setOpened] = useState(false);
   const { classes } = useStyles({ opened });
 
   return (
     <Select
+      value={props.catalogue}
+      onChange={(value) => props.setCatalogue(value)}
       onDropdownClose={() => setOpened(false)}
       onDropdownOpen={() => setOpened(true)}
       placeholder="Выберете отрасль"
       styles={{ rightSection: { pointerEvents: 'none' } }}
       rightSection={<img className={classes.icon} src={ddbtn}></img>}
-      data={[
-        { value: 'react', label: 'React' },
-        { value: 'ng', label: 'Angular' },
-        { value: 'svelte', label: 'Svelte' },
-        { value: 'vue', label: 'Vue' },
-      ]}
+      data={props.catalogues.map((el) => {
+        return { value: `${el.key}`, label: el.title }
+      })
+      }
     />
   );
 }
