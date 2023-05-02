@@ -17,5 +17,9 @@ export const vacanciesAPI = {
         .then(res => res.data.objects)
         .catch(e => e)
     },
-
+    getFavoriteVacancies(){
+        return authInstanse.get(`vacancies/?ids=${[332461, 342173]}`)
+        .then(res => res.data.objects)
+        .catch(e => e)
+    },
 }
