@@ -3,8 +3,13 @@ import s from "./HeaderVacancy.module.css";
 import not_selected_star from "/not_selected_star.svg";
 import selected_star from "/selected_star.svg";
 import location from "/location.svg";
+import { vacancyType } from "../../../types";
 
-export const HeaderVacancy = () => {
+type PropsType = {
+  vacancy: vacancyType
+}
+
+export const HeaderVacancy = (props: PropsType) => {
   const [isSelected, setIsSelected] = useState(false);
 
   const changeIsSelected = () => {

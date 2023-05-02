@@ -3,36 +3,45 @@ import s from "./Vacancy.module.css";
 import not_selected_star from "/not_selected_star.svg";
 import selected_star from "/selected_star.svg";
 import location from "/location.svg";
-import {NavLink} from "react-router-dom"
+import {useNavigate} from "react-router-dom"
 import { vacancyType } from "../../../types";
+import { vacanciesAPI } from "../../../API/vacanciesAPI";
 
 type PropsType = {
   vacancy: vacancyType
+  setFavorite: (value: Array<vacancyType>) => void
 }
 
 export const Vacancy = (props: PropsType) => {
 
-  const [isSelected, setIsSelected] = useState(false);
+  const [isSelected, setIsSelected] = useState<boolean | null>(null);
 
-  const changeIsSelected = () => {
-    if (isSelected) {
-      setIsSelected(false);
+  const changeIsSelected = async () => {
+    if (props.vacancy.favorite) {
+      setIsSelected(isSelected === null?false:isSelected?false:true);
+      await vacanciesAPI.deleteFavoriteVacancy(props.vacancy.id)
+      vacanciesAPI.getFavoriteVacancies()
+      .then(res => props.setFavorite(res))
     } 
-    if (!isSelected) {
-      setIsSelected(true);
-      localStorage.setItem('favorites', JSON.stringify([...JSON.parse(localStorage.getItem('favorites') as string), props.vacancy.id]))
+    if (!props.vacancy.favorite) {
+      setIsSelected(isSelected === null?true:isSelected?false:true);
+      await vacanciesAPI.createFavoriteVacancy(props.vacancy.id)
+      vacanciesAPI.getFavoriteVacancies()
+      .then(res => props.setFavorite(res))
     } 
   };
+
+  const navigate = useNavigate()
 
   return (
     <div className={s.wrapper}>
       <div className={s.container}>
         <div className={s.label}>
-          <NavLink to={"/vacancies/1"}>
-            <div className={s.title}>{props.vacancy.profession}</div>
-          </NavLink>
+          <div className={s.title} onClick={() => navigate("/vacancies/"+props.vacancy.id)}>{props.vacancy.profession}</div>
           <div onClick={changeIsSelected} className={s.favorite_icon}>
-            {isSelected ? (
+            {props.vacancy.favorite && isSelected === null ? (
+              <img src={selected_star}></img>
+            ) : isSelected ? (
               <img src={selected_star}></img>
             ) : (
               <img src={not_selected_star}></img>

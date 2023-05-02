@@ -7,6 +7,11 @@ export const vacanciesAPI = {
         .then(res => res.data.objects)
         .catch(e => e)
     },
+    getOneVacancy(id: string){
+        return authInstanse.get(`vacancies/${id}`)
+        .then(res => res.data)
+        .catch(e => e)
+    },
     getCatalogues(){
         return authInstanse.get("catalogues/")
         .then(res => res.data)
@@ -18,7 +23,17 @@ export const vacanciesAPI = {
         .catch(e => e)
     },
     getFavoriteVacancies(){
-        return authInstanse.get(`vacancies/?ids=${[332461, 342173]}`)
+        return authInstanse.get(`favorites`)
+        .then(res => res.data.objects)
+        .catch(e => e)
+    },
+    createFavoriteVacancy(id: number){
+        return authInstanse.post(`favorites/${id}/`)
+        .then(res => res.data.objects)
+        .catch(e => e)
+    },
+    deleteFavoriteVacancy(id: number){
+        return authInstanse.delete(`favorites/${id}/`)
         .then(res => res.data.objects)
         .catch(e => e)
     },

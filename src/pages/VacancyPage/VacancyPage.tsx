@@ -1,13 +1,25 @@
+import { useEffect, useState } from "react"
 import { AboutVacancy } from "../../components/SelectedVacancy/AboutVacancy/AboutVacancy"
 import { HeaderVacancy } from "../../components/SelectedVacancy/HeaderVacancy/HeaderVacancy"
+import { vacancyType } from "../../types"
 import s from "./VacancyPage.module.css"
+import { useParams } from "react-router-dom"
+import { vacanciesAPI } from "../../API/vacanciesAPI"
 
 
 export const VacancyPage = () => {
+
+    const [vacancy, setVacancy] = useState<vacancyType>({} as vacancyType)
+    const {id} = useParams()
+    useEffect(() => {
+        vacanciesAPI.getOneVacancy(id as string)
+        .then(data => setVacancy(data))
+    }, [])
+
     return(
         <div className={s.container}>
-            <HeaderVacancy />
-            <AboutVacancy />
+            <HeaderVacancy vacancy={vacancy} />
+            <AboutVacancy vacancy={vacancy} />
         </div>
     )
 }

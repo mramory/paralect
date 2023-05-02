@@ -9,6 +9,8 @@ export type vacancyType = {
     payment_from: number
     currency: string
     agreement: boolean
+    favorite: boolean
+    vacancyRichText: string
 }
 
 type townVacancyType = {
