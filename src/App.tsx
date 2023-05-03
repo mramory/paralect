@@ -13,6 +13,7 @@ function App() {
   useEffect(() => {
     authAPI.register()
   },[])
+
   return (
     <>
       <Header />

@@ -6,11 +6,20 @@ type PropsType = {
 }
 
 export const AboutVacancy = (props: PropsType) => {
+
+  const parser = new DOMParser
+  if(props.vacancy.vacancyRichText){
+    const inner = parser.parseFromString(props.vacancy.vacancyRichText, 'text/html')
+    const generalText = inner.body.textContent
+    const text1 = generalText?.slice(generalText.indexOf("Обязанности:"), generalText.indexOf("Требования:"))
+    console.log(text1)
+  }
+  
   
   return (
     <div className={s.wrapper}>
       <div className={s.container}>
-        <div>
+        {/* <div>
           <div className={s.responsibilities}>Обязанности:</div>
           <div>
             <ul>
@@ -39,7 +48,7 @@ export const AboutVacancy = (props: PropsType) => {
               <li>абоба</li>
             </ul>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
