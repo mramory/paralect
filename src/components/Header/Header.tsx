@@ -1,11 +1,21 @@
 import logo from "/logo.svg";
 import s from "./Header.module.css";
-import {NavLink} from "react-router-dom"
-import { useState } from "react";
+import {NavLink, useLocation} from "react-router-dom"
+import { useEffect, useState } from "react";
 
 const Header = () => {
-
   const [selected, setSelected] = useState("search")
+  const location = useLocation()
+  
+  useEffect(() => {
+    if(location.pathname === "/favorites"){
+      setSelected('fav')
+    }
+    if(location.pathname === "/"){
+      setSelected('search')
+    }
+  },[location])
+  
   return (
     <div className={s.wrapper}>
       <div className={s.container}>
@@ -14,8 +24,8 @@ const Header = () => {
           <div className={s.logo_text}>Jobored</div>
         </div>
         <div className={s.nav}>
-          <NavLink onClick={() => setSelected('search')} style={{ textDecoration: 'none', color: '#232134' }} to={"/"}><div className={`${s.nav_first_child} ${selected === "search"?s.selected:null}`}>Поиск Вакансий</div></NavLink>
-          <NavLink onClick={() => setSelected('fav')} style={{ textDecoration: 'none', color: '#232134' }} to={"/favorites"}><div className={selected === "fav"?s.selected:undefined}>Избранное</div></NavLink>
+          <NavLink style={{ textDecoration: 'none', color: '#232134' }} to={"/"}><div className={`${s.nav_first_child} ${selected === "search"?s.selected:null}`}>Поиск Вакансий</div></NavLink>
+          <NavLink style={{ textDecoration: 'none', color: '#232134' }} to={"/favorites"}><div className={selected === "fav"?s.selected:undefined}>Избранное</div></NavLink>
         </div>
       </div>
     </div>

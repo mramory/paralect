@@ -1,9 +1,15 @@
 import { Pagination } from '@mantine/core';
 
-export const MyPagination = () => {
+type PropsType = {
+    page: number
+    setPage: (page: number) => void
+    count: number
+}
+
+export const MyPagination = (props: PropsType) => {
     return(
         <div>
-            <Pagination total={3} />
+            <Pagination value={props.page} onChange={props.setPage} total={5} />
         </div>
     )
 }

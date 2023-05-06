@@ -7,6 +7,11 @@ export const vacanciesAPI = {
         .then(res => res.data.objects)
         .catch(e => e)
     },
+    getVacanciesCount(){
+        return authInstanse.get("vacancies/")
+        .then(res => res.data.total)
+        .catch(e => e)
+    },
     getOneVacancy(id: string){
         return authInstanse.get(`vacancies/${id}`)
         .then(res => res.data)

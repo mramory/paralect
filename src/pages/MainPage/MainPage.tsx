@@ -12,7 +12,7 @@ export const MainPage = () => {
 
     const [isLoading, setIsLoading] = useState<boolean>(true)
     const [vacancies, setVacancies] = useState<vacancyType[]>([])
-
+    const [page, setPage] = useState(1)
 
     useEffect(() => {
         const FetchData = async () => {
@@ -25,7 +25,7 @@ export const MainPage = () => {
             setVacancies(res.res1)
             setIsLoading(false)
         })
-    },[])
+    },[page])
 
     const [catalogues, setCatalogues] = useState([])
 
@@ -40,7 +40,7 @@ export const MainPage = () => {
             <div className={s.filter}><Filter setSearch={setSearch} search={search} setVacancies={setVacancies} catalogues={catalogues} /></div>
             <div>
                 <div className={s.search}><Search setSearch={setSearch} search={search} /></div>
-                <div><Vacancies setFavorite={() => {}} vacancies={vacancies} /></div>
+                <div><Vacancies page={page} setPage={setPage} setFavorite={() => {}} vacancies={vacancies} /></div>
             </div>
         </div>
     )

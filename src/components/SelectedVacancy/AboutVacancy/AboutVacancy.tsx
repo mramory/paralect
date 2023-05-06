@@ -11,6 +11,7 @@ export const AboutVacancy = (props: PropsType) => {
   if(props.vacancy.vacancyRichText){
     const inner = parser.parseFromString(props.vacancy.vacancyRichText, 'text/html')
     const generalText = inner.body.textContent
+    console.log(generalText)
     const text1 = generalText?.slice(generalText.indexOf("Обязанности:"), generalText.indexOf("Требования:"))
     console.log(text1)
   }
