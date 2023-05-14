@@ -53,6 +53,7 @@ export function ChooseField(props: PropsType) {
 
   return (
     <Select
+      data-elem="industry-select"
       value={props.catalogue}
       onChange={(value) => props.setCatalogue(value)}
       onDropdownClose={() => setOpened(false)}

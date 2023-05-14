@@ -11,6 +11,7 @@ export const Salary = (props: PropsType) => {
     return(
         <>
         <NumberInput
+        data-elem="salary-from-input"
         value={props.salaryFrom as number | '' | undefined} 
         onChange={(value) => props.setSalaryFrom(value)}
         hideControls
@@ -20,6 +21,7 @@ export const Salary = (props: PropsType) => {
         step={1000}
       />
         <NumberInput
+        data-elem="salary-to-input"
         value={props.salaryTo as number | '' | undefined} 
         onChange={(value) => props.setSalaryTo(value)}
         hideControls

@@ -16,7 +16,7 @@ export const MainPage = () => {
 
     useEffect(() => {
         const FetchData = async () => {
-            const res1 =  await vacanciesAPI.getAllVacancies()
+            const res1 =  await vacanciesAPI.getAllVacancies(page)
             const res2 =  await vacanciesAPI.getCatalogues()
             return {res1,res2}
         }
@@ -39,7 +39,7 @@ export const MainPage = () => {
         <div className={s.container}>
             <div className={s.filter}><Filter setSearch={setSearch} search={search} setVacancies={setVacancies} catalogues={catalogues} /></div>
             <div>
-                <div className={s.search}><Search setSearch={setSearch} search={search} /></div>
+                <div className={s.search}><Search setVacancies={setVacancies} setSearch={setSearch} search={search} /></div>
                 <div><Vacancies page={page} setPage={setPage} setFavorite={() => {}} vacancies={vacancies} /></div>
             </div>
         </div>

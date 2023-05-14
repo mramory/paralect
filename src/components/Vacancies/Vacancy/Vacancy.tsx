@@ -34,11 +34,11 @@ export const Vacancy = (props: PropsType) => {
   const navigate = useNavigate()
 
   return (
-    <div className={s.wrapper}>
+    <div data-elem={`vacancy-${props.vacancy.id}`} className={s.wrapper}>
       <div className={s.container}>
         <div className={s.label}>
           <div className={s.title} onClick={() => navigate("/vacancies/"+props.vacancy.id)}>{props.vacancy.profession}</div>
-          <div onClick={changeIsSelected} className={s.favorite_icon}>
+          <div data-elem={`vacancy-${props.vacancy.id}-shortlist-button`} onClick={changeIsSelected} className={s.favorite_icon}>
             {props.vacancy.favorite && isSelected === null ? (
               <img src={selected_star}></img>
             ) : isSelected ? (

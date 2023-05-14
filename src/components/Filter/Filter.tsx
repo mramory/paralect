@@ -29,8 +29,7 @@ export const Filter = (props: PropsType) => {
     setSalaryFrom('')
     setSalaryTo('')
     setCatalogue(null)
-    props.setSearch('')
-  }
+}
 
 
   return (
@@ -56,7 +55,7 @@ export const Filter = (props: PropsType) => {
           </div>
         </div>
         <div>
-          <Button onClick={onFilterSearch} fullWidth radius="md">Применить</Button>
+          <Button data-elem="search-button" onClick={onFilterSearch} fullWidth radius="md">Применить</Button>
         </div>
       </div>
     </div>

@@ -2,8 +2,8 @@ import { authInstanse } from "."
 
 
 export const vacanciesAPI = {
-    getAllVacancies(){
-        return authInstanse.get("vacancies/")
+    getAllVacancies(page: number){
+        return authInstanse.get(`vacancies/?page=${page}&count=4`)
         .then(res => res.data.objects)
         .catch(e => e)
     },
