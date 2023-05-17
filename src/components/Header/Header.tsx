@@ -1,6 +1,6 @@
 import logo from "/logo.svg";
 import s from "./Header.module.css";
-import {NavLink, useLocation} from "react-router-dom"
+import {NavLink, useLocation, useNavigate} from "react-router-dom"
 import { useEffect, useState } from "react";
 
 const Header = () => {
@@ -15,11 +15,13 @@ const Header = () => {
       setSelected('search')
     }
   },[location])
+
+  const navigate = useNavigate()
   
   return (
     <div className={s.wrapper}>
       <div className={s.container}>
-        <div className={s.logo}>
+        <div onClick={() => navigate("/")} className={s.logo}>
           <img src={logo}></img>
           <div className={s.logo_text}>Jobored</div>
         </div>

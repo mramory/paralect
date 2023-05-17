@@ -17,7 +17,7 @@ export const HeaderVacancy = (props: PropsType) => {
     if (!isSelected) setIsSelected(true);
   };
   return (
-    <div>
+    
       <div className={s.wrapper}>
         <div className={s.container}>
           <div className={s.label}>
@@ -51,6 +51,6 @@ export const HeaderVacancy = (props: PropsType) => {
           </div>
         </div>
       </div>
-    </div>
+
   );
 };

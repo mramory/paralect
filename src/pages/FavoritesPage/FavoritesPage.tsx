@@ -34,7 +34,7 @@ export const FavoritesPage = () => {
     return(
         <div className={s.container}>
             <div>
-                <Vacancies page={1} setPage={() => {}} vacancies={favorite} setFavorite={setFavorite} />
+                <Vacancies page={1} setPage={() => {}} vacancies={favorite} count={favorite.length} setFavorite={setFavorite} />
             </div>
         </div>
     )

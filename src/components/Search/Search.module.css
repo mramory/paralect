@@ -3,7 +3,22 @@
 }
 .btn{
     position: absolute;
-    top: 8px;
-    bottom: 8px;
+    top: 7px;
+    
     right: 12px;
+}
+
+@media (max-width: 570px) {
+    .search input::placeholder{
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 390px) {
+    .search input::placeholder{
+        font-size: 14px;
+    }
+    .btn{
+        top: 6px
+    }
 }

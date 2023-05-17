@@ -3,7 +3,6 @@ import { Button } from "@mantine/core";
 import { Salary } from "./Salary/Salary";
 import cross from "/cross.svg";
 import s from "./Filter.module.css";
-import { useState} from "react"
 import { vacanciesAPI } from "../../API/vacanciesAPI";
 import { catalogueVacancyType, vacancyType } from "../../types";
 
@@ -12,23 +11,35 @@ type PropsType = {
   setVacancies: (vacancies: Array<vacancyType>) => void
   search: string | null
   setSearch: (value: string | null) => void
+  catalogue: string | null
+  salaryFrom: number | null | ''
+  salaryTo: number | null | ""
+  setCatalogue: (value: string | null) => void
+  setSalaryFrom: (value: number | null |'') => void
+  setSalaryTo: (value: number | null | '') => void
+  setIsLoading: (value: boolean) =>void
 }
 
 export const Filter = (props: PropsType) => {
-  const [catalogue, setCatalogue] = useState<string | null>('')
-  const [salaryFrom, setSalaryFrom] = useState<number | null | ''>('')
-  const [salaryTo, setSalaryTo] = useState<number | null | ''>('')
+  
 
 
   const onFilterSearch = async () => {
-    const res = await vacanciesAPI.getFiteredVacancies(catalogue, salaryFrom, salaryTo, props.search)
+    props.setIsLoading(true)
+    const res = await vacanciesAPI.getFiteredVacancies(props.catalogue, props.salaryFrom, props.salaryTo, props.search)
     props.setVacancies(res)
+    props.setIsLoading(false)
   }
 
-  const onClear = () => {
-    setSalaryFrom('')
-    setSalaryTo('')
-    setCatalogue(null)
+  const onClear = async () => {
+    props.setIsLoading(true)
+    props.setSalaryFrom('')
+    props.setSalaryTo('')
+    props.setCatalogue(null)
+    props.setSearch('')
+    const res = await vacanciesAPI.getFiteredVacancies(null, "", "", "")
+    props.setVacancies(res)
+    props.setIsLoading(false)
 }
 
 
@@ -45,13 +56,13 @@ export const Filter = (props: PropsType) => {
         <div className={s.field}>
           <div className={s.field_text}>Отрасль</div>
           <div>
-            <ChooseField catalogue={catalogue} setCatalogue={setCatalogue} catalogues={props.catalogues} />
+            <ChooseField catalogue={props.catalogue} setCatalogue={props.setCatalogue} catalogues={props.catalogues} />
           </div>
         </div>
         <div className={s.salary}>
           <div className={s.salary_text}>Оклад</div>
           <div>
-            <Salary salaryFrom={salaryFrom} salaryTo={salaryTo} setSalaryFrom={setSalaryFrom} setSalaryTo={setSalaryTo} />
+            <Salary salaryFrom={props.salaryFrom} salaryTo={props.salaryTo} setSalaryFrom={props.setSalaryFrom} setSalaryTo={props.setSalaryTo} />
           </div>
         </div>
         <div>

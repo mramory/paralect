@@ -12,6 +12,7 @@
     margin-bottom: 40px;
 }
 .logo{
+    cursor: pointer;
     display: flex;
     align-items: center;
     margin-right: 280px;
@@ -35,4 +36,42 @@
 .selected{
     font-weight: 500;
     color: #5E96FC;
+}
+
+@media (max-width: 1170px) {
+    .container{
+        margin-left: 1rem;
+    }
+    .logo{
+        margin-right: 25%;
+    }
+}
+
+@media (max-width: 600px) {
+    .container{
+        margin-left: 1rem;
+    }
+    .logo{
+        margin-right: 10%;
+    }
+    .nav{
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 500px) {
+    .nav{
+        flex-direction: column;
+        padding-right: 1rem;
+    }
+    .nav_first_child{
+        margin: 0 0 10px 0;
+    }
+    .logo{
+        margin: 0;
+    }
+    .container{
+        padding: 16px 0;
+        justify-content: space-between;
+    }
 }

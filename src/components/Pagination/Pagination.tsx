@@ -9,7 +9,7 @@ type PropsType = {
 export const MyPagination = (props: PropsType) => {
     return(
         <div>
-            <Pagination value={props.page} onChange={props.setPage} total={125} />
+            <Pagination value={props.page} onChange={props.setPage} total={props.count!==500?Math.ceil(props.count/4):500/4} />
         </div>
     )
 }

@@ -42,3 +42,32 @@
 .busy{
     color: #232134;
 }
+.favorite_icon{
+    cursor: pointer;
+}
+
+@media (max-width: 830px) {
+    .wrapper{
+        display: flex;
+        width: 100%;
+        margin: 1rem auto;
+    }
+    .container{
+        width: 100%;
+    }
+}
+
+@media (max-width: 570px) {
+    .title{
+        font-size: 18px;
+    }
+    .salary{
+        font-size: 14px;
+    }
+    .busy{
+        font-size: 14px;
+    }
+    .location{
+        font-size: 14px;
+    }
+}
