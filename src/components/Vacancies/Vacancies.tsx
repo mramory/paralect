@@ -4,6 +4,7 @@ import { MyPagination } from "../Pagination/Pagination"
 import { vacancyType } from "../../types"
 import { useState } from "react"
 import { useLocation } from "react-router-dom"
+import { EmptyPage } from "../../pages/EmptyPage/EmptyPage"
 
 
 type PropsType = {
@@ -23,7 +24,7 @@ export const Vacancies = (props: PropsType) => {
     
     return(
         <div className={s.wrapper}>
-            <div>{props.vacancies.slice(page * 4 - 4, page * 4).map((el: vacancyType) => <div key={el.id} className={s.container}><Vacancy setFavorite={props.setFavorite} key={el.id} vacancy={el} /></div>)}</div>
+            {props.vacancies.length !== 0?<div>{props.vacancies?.slice(page * 4 - 4, page * 4).map((el: vacancyType) => <div key={el.id} className={s.container}><Vacancy setFavorite={props.setFavorite} key={el.id} vacancy={el} /></div>)}</div>:<EmptyPage isVacancies={true} />}
             <div className={s.pagination}><MyPagination count={props.count} setPage={location.pathname==="/"?props.setPage:setPage} page={location.pathname==="/"?props.page:page} /></div>
         </div>
     )

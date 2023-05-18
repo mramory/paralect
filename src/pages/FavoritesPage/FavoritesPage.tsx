@@ -28,7 +28,7 @@ export const FavoritesPage = () => {
     }
     if(favorite.length === 0){
         return(
-            <EmptyPage />
+            <EmptyPage isVacancies={false} />
         )
     }
     return(
