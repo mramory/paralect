@@ -3,7 +3,7 @@ import s from "./Vacancy.module.css";
 import not_selected_star from "/not_selected_star.svg";
 import selected_star from "/selected_star.svg";
 import location from "/location.svg";
-import {useNavigate} from "react-router-dom"
+import {useLocation, useNavigate} from "react-router-dom"
 import { vacancyType } from "../../../types";
 import { vacanciesAPI } from "../../../API/vacanciesAPI";
 
@@ -14,10 +14,14 @@ type PropsType = {
 
 export const Vacancy = (props: PropsType) => {
 
+  const Location = useLocation()
+
   const [isSelected, setIsSelected] = useState<boolean | null>(null);
+  const [isDeleted, setIsDeleted] = useState<boolean | null>(false)
 
   const changeIsSelected = async () => {
     if (props.vacancy.favorite) {
+      if(Location.pathname === "/favorites") setIsDeleted(true)
       setIsSelected(isSelected === null?false:isSelected?false:true);
       await vacanciesAPI.deleteFavoriteVacancy(props.vacancy.id)
       vacanciesAPI.getFavoriteVacancies()
@@ -34,7 +38,7 @@ export const Vacancy = (props: PropsType) => {
   const navigate = useNavigate()
 
   return (
-    <div data-elem={`vacancy-${props.vacancy.id}`} className={s.wrapper}>
+    <div data-elem={`vacancy-${props.vacancy.id}`} className={isDeleted?s.deleted:s.wrapper}>
       <div className={s.container}>
         <div className={s.label}>
           <div className={s.title} onClick={() => navigate("/vacancies/"+props.vacancy.id)}>{props.vacancy.profession}</div>

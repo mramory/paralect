@@ -23,6 +23,7 @@
     align-items: center;
 }
 .title{
+    cursor: pointer;
     font-weight: 600;
     font-size: 20px;
     color: #5E96FC;
@@ -44,6 +45,12 @@
 }
 .favorite_icon{
     cursor: pointer;
+}
+.deleted{
+    display: none;
+}
+div:has(> .deleted){
+    display: none;
 }
 
 @media (max-width: 830px) {
