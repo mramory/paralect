@@ -20,7 +20,7 @@ function App() {
       <Routes>
         <Route path="/vacancies/:id" element={<VacancyPage />} />
         <Route path="/favorites" element={<FavoritesPage />} />
-        <Route path="/empty" element={<EmptyPage />} />
+        <Route path="/empty" element={<EmptyPage isVacancies={false} />} />
         <Route path="/" element={<MainPage />} />
       </Routes>
     </>
